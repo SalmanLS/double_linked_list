@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 using System.Security;
 
 namespace double_linked_list
@@ -158,8 +159,66 @@ namespace double_linked_list
                                 obj.addnode();
                             }
                             break;
+                        case '2':
+                            {
+                                if (obj.listEmpty())
+                                {
+                                    Console.WriteLine("\n List is empty");
+                                    break;
+                                }
+                                Console.WriteLine("\n Enter the roll number of the student" + "whose record is to be deleted: ");
+                                int rollNo = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine();
+                                if (obj.delNode(rollNo) == false)
+                                    Console.WriteLine("Record not found");
+                                else 
+                                    Console.WriteLine("Record with roll number" + rollNo + "deleted\n");
+                            }
+                            break;
+                        case '3':
+                            {
+                                obj.ascending();
+                            }
+                            break;
+                        case '4':
+                            {
+                                obj.descending();
+                            }
+                            break;
+                        case '5':
+                            {
+                                if(obj.listEmpty() == true)
+                                {
+                                    Console.WriteLine("\n List is empty");
+                                    break;
+                                }
+                                node prev, curr;
+                                Console.Write("\n Enter the roll number of the student whose record you want to search: ");
+                                int num = Convert.ToInt32(Console.ReadLine());
+                                if (obj.search(num, ref prev, ref curr) == false)
+                                    Console.WriteLine("\n Record not found");
+                                else
+                                {
+                                    Console.WriteLine("\n Record found");
+                                    Console.WriteLine("\n Roll number: " + curr.noMhs);
+                                    Console.WriteLine("\n Name: " + curr.name);
+                                }
+                            }
+                            break;
+                        case '6':
+                            return;
+                        default:
+                            {
+                                Console.WriteLine("\n Invalid option");
+                            }
+                            break;
+
                     }
-                        
+
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Check for the values entered.");
                 }
             }
         }
