@@ -43,6 +43,16 @@ namespace double_linked_list
                 START = newNode;
                 return;
             }
+            node previous, current;
+            for(current = previous = START; current != null && nim >= current.noMhs; previous = current, current = current.next)
+            {
+                if(nim == current.noMhs)
+                {
+                    Console.WriteLine("\n Duplicate roll numbers not allowed");
+                    return;
+                }
+            }
+
         }
     }
 }
