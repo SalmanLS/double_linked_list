@@ -70,5 +70,13 @@ namespace double_linked_list
             for (previous = current = START; current != null && rollNo != current.noMhs; previous = current, current = current.next) { }
             return (current != null);
         }
+        public bool delNode(int rollNo)
+        {
+            node previous, current;
+            previous = current = null;
+            if (search(rollNo, ref previous, ref current) == false)
+                return false;
+
+        }
     }
 }
