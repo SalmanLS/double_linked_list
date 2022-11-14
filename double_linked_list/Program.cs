@@ -31,7 +31,18 @@ namespace double_linked_list
             newNode.noMhs = nim;
             newNode.name = nm;
 
-            
+            if(START == null || nim <= START.noMhs)
+            {
+                if((START != null) && (nim == START.noMhs))
+                {
+                    Console.WriteLine("\n Duplicate number not allowed");
+                }
+                newNode.next = START;
+                if (START != null)
+                    START.prev = null;
+                START = newNode;
+                return;
+            }
         }
     }
 }
