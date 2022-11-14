@@ -104,6 +104,15 @@ namespace double_linked_list
             else
                 return false;
         }
-
+        public void ascending()
+        {
+            if (listEmpty())
+                Console.Write("\n List is empty");
+            else
+                Console.WriteLine("\n Record in the ascending order of" + "roll number are:\n");
+            node currentNode;
+            for (currentNode = START; currentNode != null; currentNode = currentNode.next)
+                Console.Write(currentNode.noMhs + "" + currentNode.name + "\n");
+        }
     }
 }
