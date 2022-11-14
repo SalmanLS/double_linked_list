@@ -27,6 +27,11 @@ namespace double_linked_list
             nim = Convert.ToInt32(Console.ReadLine());
             Console.Write("\n Enter the name of the student: ");
             nm = Console.ReadLine();
+            node newNode = new node();
+            newNode.noMhs = nim;
+            newNode.name = nm;
+
+            
         }
     }
 }
