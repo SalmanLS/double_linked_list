@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security;
 
 namespace double_linked_list
 {
@@ -63,6 +64,10 @@ namespace double_linked_list
             }
             current.prev = newNode;
             previous.next = newNode;
+        }
+        public bool search(int rollNo, ref node previous, ref node current)
+        {
+            
         }
     }
 }
