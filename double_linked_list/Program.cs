@@ -9,4 +9,9 @@ namespace double_linked_list
         public node next;
         public node prev;
     }
+
+    class DoubleLinkedList
+    {
+        
+    }
 }
