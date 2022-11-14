@@ -114,5 +114,23 @@ namespace double_linked_list
             for (currentNode = START; currentNode != null; currentNode = currentNode.next)
                 Console.Write(currentNode.noMhs + "" + currentNode.name + "\n");
         }
+        public void descending()
+        {
+            if (listEmpty())
+                Console.WriteLine("\n List is Empty");
+            else
+            {
+                Console.WriteLine("\n Record in the descending order of" + "roll number are: \n");
+                node currentNode;
+                for(currentNode = START; currentNode != null; currentNode = currentNode.next) { }
+
+                while(currentNode != null)
+                {
+                    Console.Write(currentNode.noMhs + "" + currentNode.name + "\n");
+                    currentNode = currentNode.prev;
+                }
+            }
+            
+        }
     }
 }
