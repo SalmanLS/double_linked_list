@@ -97,6 +97,10 @@ namespace double_linked_list
             current.next.prev = previous;
             return true;
         }
+        public bool listEmpty()
+        {
+            
+        }
 
     }
 }
