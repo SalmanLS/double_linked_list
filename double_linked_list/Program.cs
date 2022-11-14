@@ -16,7 +16,7 @@ namespace double_linked_list
 
         public DoubleLinkedList()
         {
-            
+            START = null;
         }
     }
 }
