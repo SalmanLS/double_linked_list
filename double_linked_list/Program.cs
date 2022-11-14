@@ -193,9 +193,10 @@ namespace double_linked_list
                                     break;
                                 }
                                 node prev, curr;
+                                prev = curr = null;
                                 Console.Write("\n Enter the roll number of the student whose record you want to search: ");
                                 int num = Convert.ToInt32(Console.ReadLine());
-                                if (obj.search(num, ref prev, ref curr) == false)
+                                if (obj.search(num, ref prev,ref curr) == false)
                                     Console.WriteLine("\n Record not found");
                                 else
                                 {
