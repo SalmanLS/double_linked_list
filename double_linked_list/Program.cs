@@ -23,6 +23,10 @@ namespace double_linked_list
         {
             int nim;
             string nm;
+            Console.Write("\n Enter the roll number of the student: ");
+            nim = Convert.ToInt32(Console.ReadLine());
+            Console.Write("\n Enter the name of the student: ");
+            nm = Console.ReadLine();
         }
     }
 }
