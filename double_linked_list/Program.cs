@@ -4,12 +4,13 @@ using System.Security;
 
 namespace double_linked_list
 {
-    class node
+    class node // ini adalah class node yang berguna sebagai blueprint untuk membuat objek node
     {
-        public int noMhs;
-        public string name;
-        public node next;
-        public node prev;
+        // public disini berarti variabel dapat digunakan diluar kelas/kelas yang lain
+        public int noMhs; // ini adalah variabel noMhs bertipe data integer(angka) digunakan sebagai wadah untuk mengisi data angka
+        public string name; // ini adalah variabel name bertipe data string yang digunakan sebagai wadah untuk mengisi data huruf
+        public node next; // ini adalah objek yang dibuat langsung didalam code dengan nama next  
+        public node prev; // ini adalah objek yang dibuat langsung didalam code dengan nama prev
     }
 
     class DoubleLinkedList
@@ -21,18 +22,20 @@ namespace double_linked_list
             START = null;
         }
 
-        public void addnode()
+        public void addnode()// ini adalah method void yang berguna untuk menambahkan data 
         {
             int nim;
             string nm;
+            // input data nama dan nim
             Console.Write("\n Enter the roll number of the student: ");
             nim = Convert.ToInt32(Console.ReadLine());
             Console.Write("\n Enter the name of the student: ");
             nm = Console.ReadLine();
+            // memasukkan data yang telah diinput kedalam node
             node newNode = new node();
             newNode.noMhs = nim;
             newNode.name = nm;
-
+            // jika data dinode masi kosong/belum ada data sama sekali
             if(START == null || nim <= START.noMhs)
             {
                 if((START != null) && (nim == START.noMhs))
@@ -45,6 +48,7 @@ namespace double_linked_list
                 START = newNode;
                 return;
             }
+            // jika data yang dimasukkan kedalam node yang berada diantara 2 node
             node previous, current;
             for(current = previous = START; current != null && nim >= current.noMhs; previous = current, current = current.next)
             {
@@ -56,8 +60,8 @@ namespace double_linked_list
             }
             newNode.next = current;
             newNode.prev = previous;
-
-            if(current == null)
+            //ini jika angkanya lebih besar dari semua elemen yang ada di linked list.
+            if(current == null)  
             {
                 newNode.next = null;
                 previous.next = newNode;
@@ -66,11 +70,13 @@ namespace double_linked_list
             current.prev = newNode;
             previous.next = newNode;
         }
+        // method untuk emncari data yang sudah dimasukkan
         public bool search(int rollNo, ref node previous, ref node current)
         {
             for (previous = current = START; current != null && rollNo != current.noMhs; previous = current, current = current.next) { }
             return (current != null);
         }
+        // method untuk menghapus data yang sudah dimasukkan
         public bool delNode(int rollNo)
         {
             node previous, current;
@@ -98,6 +104,7 @@ namespace double_linked_list
             current.next.prev = previous;
             return true;
         }
+        // methode untuk memastikan kekosongan data
         public bool listEmpty()
         {
             if (START == null)
@@ -105,44 +112,47 @@ namespace double_linked_list
             else
                 return false;
         }
+        // method untuk menampilkan data dari urutan atas ke bawah
         public void ascending()
         {
             if (listEmpty())
                 Console.Write("\n List is empty");
             else
-                Console.WriteLine("\n Record in the ascending order of" + "roll number are:\n");
+                Console.WriteLine("\n Record in the ascending order of" + " " + "roll number are:\n");
             node currentNode;
             for (currentNode = START; currentNode != null; currentNode = currentNode.next)
-                Console.Write(currentNode.noMhs + "" + currentNode.name + "\n");
+                Console.Write(currentNode.noMhs + " " + currentNode.name + "\n");
         }
+        // method untuk menampilkan data dari urutan bawah ke atas
         public void descending()
         {
             if (listEmpty())
                 Console.WriteLine("\n List is Empty");
             else
             {
-                Console.WriteLine("\n Record in the descending order of" + "roll number are: \n");
+                Console.WriteLine("\n Record in the descending order of" + " " + "roll number are: \n");
                 node currentNode;
                 for(currentNode = START; currentNode != null; currentNode = currentNode.next) { }
-
                 while(currentNode != null)
                 {
-                    Console.Write(currentNode.noMhs + "" + currentNode.name + "\n");
+
+                    Console.Write(currentNode.noMhs + " " + currentNode.name + "\n");
                     currentNode = currentNode.prev;
                 }
             }
             
         }
     }
-    class Program
+    class Program // class untuk menjalankan program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) // method untuk menjalankan program
         {
-            DoubleLinkedList obj = new DoubleLinkedList();
+            DoubleLinkedList obj = new DoubleLinkedList(); // membuat objek dari class DoubleLinkedList
             while (true)
             {
-                try
+                try 
                 {
+                    // Menu dari program yang dijalankan
                     Console.WriteLine("\n Menu");
                     Console.WriteLine("1. Add a record to the list");
                     Console.WriteLine("2. Delete a record from the list");
@@ -151,38 +161,41 @@ namespace double_linked_list
                     Console.WriteLine("5. Search for a record in the list");
                     Console.WriteLine("6. Exit\n");
                     Console.Write("Enter your choice (1-6): ");
-                    char ch = Convert.ToChar(Console.ReadLine());
+                    char ch = Convert.ToChar(Console.ReadLine()); // menerima input dari user memilih menu yang ada
                     switch (ch)
                     {
-                        case '1':
+                        case '1':// jika pilihan menu 1
                             {
-                                obj.addnode();
+                                obj.addnode(); // memanggil objek dan methodnya
                             }
                             break;
                         case '2':
                             {
-                                if (obj.listEmpty())
+                                if (obj.listEmpty()) // memanggil objek dan methodnya
                                 {
                                     Console.WriteLine("\n List is empty");
                                     break;
                                 }
+                                // user input data nim yang akan dihapus
                                 Console.WriteLine("\n Enter the roll number of the student" + "whose record is to be deleted: ");
                                 int rollNo = Convert.ToInt32(Console.ReadLine());
                                 Console.WriteLine();
+                                // jika datanya tidak ada
                                 if (obj.delNode(rollNo) == false)
                                     Console.WriteLine("Record not found");
+                                // jika datanya ada
                                 else 
-                                    Console.WriteLine("Record with roll number" + rollNo + "deleted\n");
+                                    Console.WriteLine("Record with roll number" + " " +  rollNo + " " + "deleted\n");
                             }
                             break;
                         case '3':
                             {
-                                obj.ascending();
+                                obj.ascending(); // memanggil objek dan methodnya
                             }
                             break;
                         case '4':
                             {
-                                obj.descending();
+                                obj.descending(); // memanggil objek dan methodnya
                             }
                             break;
                         case '5':
@@ -192,12 +205,15 @@ namespace double_linked_list
                                     Console.WriteLine("\n List is empty");
                                     break;
                                 }
+                                // untuk mencari data 
                                 node prev, curr;
                                 prev = curr = null;
                                 Console.Write("\n Enter the roll number of the student whose record you want to search: ");
                                 int num = Convert.ToInt32(Console.ReadLine());
+                                // jika datanya tidak ada
                                 if (obj.search(num, ref prev,ref curr) == false)
                                     Console.WriteLine("\n Record not found");
+                                // jika datanya ada
                                 else
                                 {
                                     Console.WriteLine("\n Record found");
@@ -210,7 +226,7 @@ namespace double_linked_list
                             return;
                         default:
                             {
-                                Console.WriteLine("\n Invalid option");
+                                Console.WriteLine("\n Invalid option"); // jika angka yang dimasukkan tidak ada di menu yang disediakan
                             }
                             break;
 
